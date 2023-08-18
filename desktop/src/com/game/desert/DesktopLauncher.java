@@ -2,14 +2,17 @@ package com.game.desert;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.game.desert.DesertGame;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Graphics;
 
-// Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
+
 public class DesktopLauncher {
 	public static void main (String[] arg) {
+		//Farklı platformlar için ekran ayarları.
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+		Lwjgl3Graphics.Lwjgl3DisplayMode displayMode = (Lwjgl3Graphics.Lwjgl3DisplayMode) Lwjgl3ApplicationConfiguration.getDisplayMode();
+		config.setFullscreenMode(displayMode);
 		config.setForegroundFPS(60);
-		config.setTitle("Desert_V0.99");
+		config.setTitle("Desert Game");
 		new Lwjgl3Application(new DesertGame(), config);
 	}
 }

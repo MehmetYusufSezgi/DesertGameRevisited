@@ -1,8 +1,7 @@
 package com.game.desert.Screens;
 
-import com.badlogic.gdx.Screen;
-
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,20 +16,22 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.game.desert.DesertGame;
 
-public class MenuScreen implements Screen {
+public class PauseScreen implements Screen {
+    //Burası menü ekranının aynısı
+    //Normalde menü ekranına dönemezken bu sınıf sayesinde dönebiliyoruz.
     private DesertGame parent;
     private Stage stage;
     private Label label;
     private Texture background;
-    public MenuScreen(DesertGame game){
-        //Ekranın tanımlanması.
+    public PauseScreen(DesertGame game){
+
         parent = game;
         stage = new Stage(new FitViewport(DesertGame.WIDTH,DesertGame.HEIGHT));
         Gdx.input.setInputProcessor(stage);
 
         background = new Texture("ArkaPlan/ArkaPlan.png");
 
-        //Tüm işlemlerimi içeren taslağın oluşturulması.
+
         Table table = new Table();
         table.setFillParent(true);
         table.setDebug(true);
@@ -48,7 +49,7 @@ public class MenuScreen implements Screen {
 
         Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
-        // Butonların oluşturulması.
+
         TextButton playGame = new TextButton("OYNA", skin);
         TextButton preferences = new TextButton("AYARLAR", skin);
         TextButton exit = new TextButton("CIKIS", skin);
@@ -59,18 +60,16 @@ public class MenuScreen implements Screen {
         exit.setSize(160, 90);
 
 
-        // Butonları ekrana ekler.
         stage.addActor(playGame);
         stage.addActor(preferences);
         stage.addActor(exit);
 
-        // Butonların pozisyonlarını belirler
+
         playGame.setPosition(100, 400);
         preferences.setPosition(100, 250);
         exit.setPosition(100, 100);
 
 
-        //Butonlara basıldığında algılanmasını sağlar.
         playGame.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -97,6 +96,8 @@ public class MenuScreen implements Screen {
 
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
+
+
     }
 
     @Override
@@ -106,12 +107,13 @@ public class MenuScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        //Ekranı tazeler.
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
+
+
     }
 
     @Override
